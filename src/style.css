@@ -126,21 +126,34 @@ main {
   margin-top: 6px;
 }
 
-.dark-theme-button {
-  background: #885df1;
-  border: 1px solid #ffff;
-  border-radius: 6px;
-  color: #ffff;
-  display: block;
-  font-size: 14px;
-  font-weight: bold;
-  margin: 20px auto;
-  padding: 10px 20px;
-  transition: all 200ms ease-in-out;
+.weather-forecast-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
 }
 
-.dark-theme-button:hover {
-  background: #7a4dd4;
+.weather-forecast-date {
+  text-align: center;
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.weather-forecast-icon {
+  font-size: 38px;
+  text-align: center;
+}
+
+.weather-forecast-temperatures {
+  color: #f65282;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.weather-forecast-temp {
+  padding: 0 10px;
 }
 
 body.dark {
@@ -196,4 +209,21 @@ body.dark .dark-theme-button {
 
 body.dark .dark-theme-button:hover {
   background: rgba(255, 255, 255, 0.3);
+}
+
+.dark-theme-button {
+  background: #885df1;
+  border: 1px solid #ffff;
+  border-radius: 6px;
+  color: #ffff;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 20px auto;
+  padding: 10px 20px;
+  transition: all 200ms ease-in-out;
+}
+
+.dark-theme-button:hover {
+  background: #7a4dd4;
 }

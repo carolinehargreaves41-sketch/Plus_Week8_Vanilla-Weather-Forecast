@@ -112,3 +112,5 @@ function changeTheme() {
 
 let themeButton = document.querySelector(".dark-theme-button");
 themeButton.addEventListener("click", changeTheme);
+
+//This function 
