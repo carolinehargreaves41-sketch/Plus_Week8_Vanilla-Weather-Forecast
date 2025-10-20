@@ -71,10 +71,6 @@ function handleSearchSubmit(event) {
   }
 }
 
-//Add event listener for the search form
-let searchFormElement = document.querySelector("#search-form");
-searchFormElement.addEventListener("submit", handleSearchSubmit);
-
 //This function formats the current date and time
 function formatDate(date) {
   let minutes = date.getMinutes();
@@ -96,9 +92,6 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
-//Load the weather for a default city on page load
-getWeatherCity("London");
-
 //This function adds the Dark Theme
 function changeTheme() {
   let body = document.querySelector("body");
@@ -113,4 +106,39 @@ function changeTheme() {
 let themeButton = document.querySelector(".dark-theme-button");
 themeButton.addEventListener("click", changeTheme);
 
-//This function 
+//This function adds the Weather Forecast
+
+function displayForecast() {
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+      <div class="weather-forecast-day">
+        <div class="weather-forecast-date">${day}</div>
+        <div class="weather-forecast-icon">⛅</div>
+        <div class="weather-forecast-temperatures">
+          <div class="weather-forecast-temp">
+            <strong>15°</strong>
+          </div>
+          <div class="weather-forecast-temp">9°</div>
+        </div>
+      </div>
+    `;
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
+//Add event listener for the search form
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", handleSearchSubmit);
+
+//Load the weather for a default city on page load
+getWeatherCity("London");
+
+//Call the displayForecast function
+displayForecast();
