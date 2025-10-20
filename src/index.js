@@ -48,6 +48,8 @@ function refreshWeather(response) {
   windSpeedElement.innerHTML = `${response.data.wind.speed}km/h`;
   temperatureElement.innerHTML = Math.round(temperature);
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
+
+  getForecast(response.data.city);
 }
 
 // This function handles API errors
@@ -106,9 +108,17 @@ function changeTheme() {
 let themeButton = document.querySelector(".dark-theme-button");
 themeButton.addEventListener("click", changeTheme);
 
-//This function adds the Weather Forecast
+//This function fetches the Weather Forecast Data
+function getForecast(city) {
+  let apiKey = "o9f9ab326ef453b45bfe0f44453a6b2t";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
+}
 
-function displayForecast() {
+//This function adds the Weather Forecast
+function displayForecast(response) {
+  console.log(response.data);
+
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = "";
 
@@ -139,6 +149,3 @@ searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 //Load the weather for a default city on page load
 getWeatherCity("London");
-
-//Call the displayForecast function
-displayForecast();
